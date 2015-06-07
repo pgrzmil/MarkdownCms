@@ -33,7 +33,7 @@ namespace MarkdownCms.Helpers
 
             foreach (var file in files)
             {
-                directoryTree.Add(new DirectoryNode() { Name = file.Name, Path = file.FullName, IsFile = true });
+                directoryTree.Add(new DirectoryNode() { Name = Path.GetFileNameWithoutExtension(file.Name), Path = file.FullName, IsFile = true });
             }
 
             // Now find all the subdirectories under this directory.

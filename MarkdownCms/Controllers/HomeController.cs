@@ -12,8 +12,16 @@ namespace MarkdownCms.Controllers
     {
         public ActionResult Index()
         {
-            var tree = DirectoryHelper.GetDirectoryTree(ConfigurationManager.AppSettings["FilesPath"]);
+            var rootPath = ConfigurationManager.AppSettings["FilesPath"];
+            var tree = DirectoryHelper.GetDirectoryTree(rootPath);
             ViewBag.Nodes = tree;
+
+            using (var reader = new System.IO.StreamReader(rootPath + "\\README.md"))
+            {
+                var fileContent = reader.ReadToEnd();
+                var htmlResult = CommonMark.CommonMarkConverter.Convert(fileContent);
+                ViewBag.FileContent = htmlResult;
+            }
             return View();
         }
     }
