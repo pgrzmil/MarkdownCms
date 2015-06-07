@@ -15,8 +15,8 @@ namespace MarkdownCms
 
             routes.MapRoute(
                 name: "Default",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                url: "{*path}",
+                defaults: new { controller = "Home", action = "Index", path = UrlParameter.Optional }
             );
         }
     }

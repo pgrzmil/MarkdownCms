@@ -10,7 +10,7 @@ namespace MarkdownCms.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        public ActionResult Index(string path = "")
         {
             var rootPath = ConfigurationManager.AppSettings["FilesPath"];
             var tree = DirectoryHelper.GetDirectoryTree(rootPath);
