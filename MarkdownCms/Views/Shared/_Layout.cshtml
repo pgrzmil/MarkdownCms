@@ -15,16 +15,25 @@
         <li class="menuList">
             @if (folder.IsFile)
             {
-                <span class="leaf" id="@folder.Path">@folder.Name</span>
+                <span class="file" id="@folder.Path">
+                    <img src="@Url.Content("~/Content/fileIcon.png")" width="15" height="15" alt="Image" />
+                    <a href="@folder.GetPathForUrl()">@folder.Name</a>
+                </span>
             }
             else
             {
-                <span class="folder">@folder.Name</span>
                 if (folder.Subfolders.Count != 0)
                 {
-                    <ul>
-                        @TreeView(folder.Subfolders)
-                    </ul>
+                    <span class="folder">
+                        <img src="@Url.Content("~/Content/folderIcon.png")" width="15" height="15" alt="Image" />
+                        <span>@folder.Name</span>
+                    </span>
+                    if (folder.Subfolders.Count != 0)
+                    {
+                        <ul>
+                            @TreeView(folder.Subfolders)
+                        </ul>
+                    }
                 }
             }
         </li>
