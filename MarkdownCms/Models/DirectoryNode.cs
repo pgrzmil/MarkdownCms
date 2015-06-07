@@ -15,6 +15,8 @@ namespace MarkdownCms.Models
 
         public string Name { get; set; }
 
+        public string Path { get; set; }
+
         public IList<DirectoryNode> Subfolders { get; set; }
 
         public bool IsFile { get; set; }

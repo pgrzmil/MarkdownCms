@@ -33,14 +33,14 @@ namespace MarkdownCms.Helpers
 
             foreach (var file in files)
             {
-                directoryTree.Add(new DirectoryNode() { Name = file.Name, IsFile = true });
+                directoryTree.Add(new DirectoryNode() { Name = file.Name, Path = file.FullName, IsFile = true });
             }
 
             // Now find all the subdirectories under this directory.
             subDirs = currentDirectory.GetDirectories();
             foreach (var dirInfo in subDirs)
             {
-                directoryTree.Add(new DirectoryNode { Name = dirInfo.Name, Subfolders = GetDirectoryTree(dirInfo.FullName) });
+                directoryTree.Add(new DirectoryNode { Name = dirInfo.Name, Path = dirInfo.FullName, Subfolders = GetDirectoryTree(dirInfo.FullName) });
             }
 
             return directoryTree;

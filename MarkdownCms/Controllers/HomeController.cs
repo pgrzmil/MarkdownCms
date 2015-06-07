@@ -12,7 +12,8 @@ namespace MarkdownCms.Controllers
     {
         public ActionResult Index()
         {
-            //var tree = DirectoryHelper.GetDirectoryTree(ConfigurationManager.AppSettings["FilesPath"]);
+            var tree = DirectoryHelper.GetDirectoryTree(ConfigurationManager.AppSettings["FilesPath"]);
+            ViewBag.Nodes = tree;
             return View();
         }
     }

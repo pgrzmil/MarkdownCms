@@ -3,35 +3,50 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
+
+@helper TreeView(IEnumerable<MarkdownCms.Models.DirectoryNode> folders)
+{
+    foreach (var folder in folders)
+    {
+        <li class="menuList">
+            @if (folder.IsFile)
+            {
+                <span class="leaf" id="@folder.Path">@folder.Name</span>
+            }
+            else
+            {
+                <span class="folder">@folder.Name</span>
+                if (folder.Subfolders.Count != 0)
+                {
+                    <ul>
+                        @TreeView(folder.Subfolders)
+                    </ul>
+                }
+            }
+        </li>
+    }
+}
+
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
-            </div>
+    <div class="col-md-3">
+        <div class="navbar navbar-inverse">
+            <span class="navbar-text">MENU</span>
         </div>
+        <ul class="menuList">
+            @TreeView(ViewBag.Nodes)
+        </ul>
     </div>
-    <div class="container body-content">
+    <div class="col-md-9 container body-content">
         @RenderBody()
+    </div>
+    <div class="col-md-12">
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; @DateTime.Now.Year - Markdown CMS</p>
         </footer>
     </div>
 
