@@ -15,13 +15,13 @@ namespace MarkdownCms.Helpers
             List<DirectoryNode> directoryTree = new List<DirectoryNode>();
 
             var currentDirectory = new DirectoryInfo(path);
-            FileInfo[] files;
-            DirectoryInfo[] subDirs;
+            List<FileInfo> files;
+            List<DirectoryInfo> subDirs;
 
             // First, process all the files directly under this folder
             try
             {
-                files = currentDirectory.GetFiles();
+                files = currentDirectory.GetFiles().ToList();
             }
             // This is thrown if even one of the files requires permissions greater than the application provides.
             catch (UnauthorizedAccessException e)
@@ -37,7 +37,9 @@ namespace MarkdownCms.Helpers
             }
 
             // Now find all the subdirectories under this directory.
-            subDirs = currentDirectory.GetDirectories();
+            subDirs = currentDirectory.GetDirectories().ToList();
+            subDirs.RemoveAll(d => d.Name == ".git");
+
             foreach (var dirInfo in subDirs)
             {
                 directoryTree.Add(new DirectoryNode { Name = dirInfo.Name, Path = dirInfo.FullName, Subfolders = GetDirectoryTree(dirInfo.FullName) });
