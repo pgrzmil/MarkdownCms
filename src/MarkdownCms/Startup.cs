@@ -21,11 +21,15 @@ using Microsoft.Framework.Logging;
 using Microsoft.Framework.Logging.Console;
 using Microsoft.Framework.Runtime;
 using MarkdownCms.Models;
-using MarkdownCms.Services;
 using MarkdownCms.Controllers;
 
 namespace MarkdownCms
 {
+    public static class X
+    {
+        public static string FilesPath;
+    }
+
     public class Startup
     {
         public Startup(IHostingEnvironment env, IApplicationEnvironment appEnv)
@@ -44,6 +48,8 @@ namespace MarkdownCms
             }
             builder.AddEnvironmentVariables();
             Configuration = builder.Build();
+
+            X.FilesPath = Configuration["AppSettings:FilesPath"];
         }
 
         public IConfiguration Configuration { get; set; }
@@ -52,11 +58,7 @@ namespace MarkdownCms
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddOptions();
-            services.Configure<Options>(options =>
-            {
-                options.FilesPath = Configuration["AppSettings:FilesPath"];
-            });
-
+              
             // Add MVC services to the services container.
             services.AddMvc();
         }

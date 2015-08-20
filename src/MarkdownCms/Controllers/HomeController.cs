@@ -7,24 +7,18 @@ using System.Collections.Generic;
 using System.Linq;
 
 namespace MarkdownCms.Controllers
-{
-    public class Options
-    {
-        public string FilesPath { get; set; }
-    }
-
+{    
     public class HomeController : Controller
     {
-        public string FilesPath { get; set; }
+        private string FilesPath { get; set; }
 
-        public HomeController(IOptions<Options> options)
-        {            
-            FilesPath = options.Options.FilesPath;
+        public HomeController()
+        {
+            FilesPath = X.FilesPath;
         }
 
         public ActionResult Index(string path = "")
-        {           
-            //var tree = DirectoryHelper.GetDirectoryTree(ConfigurationManager.AppSettings["FilesPath"]);
+        {
             var tree = DirectoryHelper.GetDirectoryTree(FilesPath);
             ViewBag.Nodes = tree;
 
