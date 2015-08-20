@@ -21,7 +21,7 @@
                     if (folder.Subfolders.Count != 0)
                     {
                         <ul>
-                            @Html.Partial("Folder", folder.Subfolders)
+                            @{await Html.RenderPartialAsync("Folder", folder.Subfolders);}
                         </ul>
                     }
                 }

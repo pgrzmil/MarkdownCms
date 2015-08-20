@@ -15,7 +15,7 @@
             <span class="navbar-text">MENU</span>
         </div>
         <ul class="menuList">
-            @Html.Partial("Folder", (IList<MarkdownCms.Models.DirectoryNode>)ViewBag.Nodes)            
+            @{ await Html.RenderPartialAsync("Folder", (IList<MarkdownCms.Models.DirectoryNode>)ViewBag.Nodes);            }
         </ul>
 
     </div>
