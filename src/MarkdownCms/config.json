@@ -1,6 +1,7 @@
 {
   "AppSettings": {
-    "SiteTitle": "MarkdownCmsvNext"
+    "SiteTitle": "MarkdownCmsvNext",
+    "FilesPath": "E:\\Marcin\\Temp\\WebApplication1"
   },
   "Data": {
     "DefaultConnection": {

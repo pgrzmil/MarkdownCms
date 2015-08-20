@@ -1,18 +1,31 @@
 ﻿using MarkdownCms.Helpers;
 using MarkdownCms.Models;
 using Microsoft.AspNet.Mvc;
+using Microsoft.Framework.OptionsModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace MarkdownCms.Controllers
 {
+    public class Options
+    {
+        public string FilesPath { get; set; }
+    }
+
     public class HomeController : Controller
     {
+        public string FilesPath { get; set; }
+
+        public HomeController(IOptions<Options> options)
+        {            
+            FilesPath = options.Options.FilesPath;
+        }
+
         public ActionResult Index(string path = "")
-        {
+        {           
             //var tree = DirectoryHelper.GetDirectoryTree(ConfigurationManager.AppSettings["FilesPath"]);
-            var tree = DirectoryHelper.GetDirectoryTree(@"E:\Marcin\Temp\WebApplication1");
+            var tree = DirectoryHelper.GetDirectoryTree(FilesPath);
             ViewBag.Nodes = tree;
 
             string filePath = "";

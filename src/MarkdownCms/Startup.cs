@@ -22,6 +22,7 @@ using Microsoft.Framework.Logging.Console;
 using Microsoft.Framework.Runtime;
 using MarkdownCms.Models;
 using MarkdownCms.Services;
+using MarkdownCms.Controllers;
 
 namespace MarkdownCms
 {
@@ -49,7 +50,13 @@ namespace MarkdownCms
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
-        {           
+        {
+            services.AddOptions();
+            services.Configure<Options>(options =>
+            {
+                options.FilesPath = Configuration["AppSettings:FilesPath"];
+            });
+
             // Add MVC services to the services container.
             services.AddMvc();
         }
