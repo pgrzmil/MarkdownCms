@@ -3,7 +3,9 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title</title>    
+    <title>@ViewBag.Title</title>
+    <link href="~/wwwroot/css/site.css" rel="stylesheet" />
+    <script src="~/wwwroot/js/site.js"></script>
 </head>
 
 <body>
@@ -11,9 +13,10 @@
         <div class="navbar navbar-inverse">
             <span class="navbar-text">MENU</span>
         </div>
-        <ul class="menuList">            
-            @TreeView(ViewBag.Nodes)
+        <ul class="menuList">
+            @Html.Partial("Folder", (IList<MarkdownCms.Models.DirectoryNode>)ViewBag.Nodes)
         </ul>
+
     </div>
     <div class="col-md-9 container body-content">
         @RenderBody()

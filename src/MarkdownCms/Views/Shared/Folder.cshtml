@@ -1,0 +1,31 @@
+﻿@Model IList<DirectoryNode>
+
+    @foreach (var folder in Model)
+    {
+
+        <li class="menuList">
+            @if (folder.IsFile)
+            {
+                <span class="file" id="@folder.Path">
+                    <img src="@Url.Content("~/Content/fileIcon.png")" width="15" height="15" alt="Image" />
+                    <a href="@folder.GetPathForUrl()">@folder.Name</a>
+                </span>
+            }
+            else
+            {
+                if (folder.Subfolders.Count != 0)
+                {
+                    <span class="folder">
+                        <img src="@Url.Content("~/Content/folderIcon.png")" width="15" height="15" alt="Image" />
+                        <span>@folder.Name</span>
+                    </span>
+                    if (folder.Subfolders.Count != 0)
+                    {
+                        <ul>
+                            @Html.Partial("Folder", (IList<MarkdownCms.Models.DirectoryNode>)folder.Subfolders)
+                        </ul>
+                    }
+                }
+            }
+        </li>
+    }
