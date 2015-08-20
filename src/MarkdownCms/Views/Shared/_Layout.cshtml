@@ -14,7 +14,7 @@
             <span class="navbar-text">MENU</span>
         </div>
         <ul class="menuList">
-            @Html.Partial("Folder", (IList<MarkdownCms.Models.DirectoryNode>)ViewBag.Nodes)
+            @Html.Partial("Folder", (IList<MarkdownCms.Models.DirectoryNode>)ViewBag.Nodes)            
         </ul>
 
     </div>
@@ -26,8 +26,6 @@
         <footer>
             <p>&copy; @DateTime.Now.Year - Markdown CMS</p>
         </footer>
-    </div>
-
-    @RenderSection("scripts", required: false)
+    </div>    
 </body>
 </html>
