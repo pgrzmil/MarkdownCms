@@ -6,7 +6,7 @@
             @if (folder.IsFile)
             {
                 <span class="file" id="@folder.Path">
-                    <!--<img src="@Url.Content("~/Content/fileIcon.png")" width="15" height="15" alt="Image" />-->
+                    <img src="@Url.Content("~/images/fileIcon.png")" width="15" height="15" alt="Image" />
                     <a href="@folder.GetPathForUrl()">@folder.Name</a>
                 </span>
             }
@@ -15,7 +15,7 @@
                 if (folder.Subfolders.Count != 0)
                 {
                     <span class="folder">
-                        <!--<img src="@Url.Content("~/Content/folderIcon.png")" width="15" height="15" alt="Image" />-->
+                        <img src="@Url.Content("~/images/folderIcon.png")" width="15" height="15" alt="Image" />
                         <span>@folder.Name</span>
                     </span>
                     if (folder.Subfolders.Count != 0)
