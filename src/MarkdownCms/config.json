@@ -1,0 +1,10 @@
+{
+  "AppSettings": {
+    "SiteTitle": "MarkdownCmsvNext"
+  },
+  "Data": {
+    "DefaultConnection": {
+      "ConnectionString": "Server=(localdb)\\mssqllocaldb;Database=aspnet5-MarkdownCmsvNext-6f4c4c1e-4a86-4e65-af23-2ce544ebb79c;Trusted_Connection=True;MultipleActiveResultSets=true"
+    }
+  }
+}

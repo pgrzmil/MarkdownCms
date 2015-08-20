@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>    
+</head>
+
+<body>
+    <div class="col-md-3">
+        <div class="navbar navbar-inverse">
+            <span class="navbar-text">MENU</span>
+        </div>
+        <ul class="menuList">            
+            @TreeView(ViewBag.Nodes)
+        </ul>
+    </div>
+    <div class="col-md-9 container body-content">
+        @RenderBody()
+    </div>
+    <div class="col-md-12">
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Markdown CMS</p>
+        </footer>
+    </div>
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>
