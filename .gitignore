@@ -198,3 +198,4 @@ FakesAssemblies/
 src/MarkdownCms/wwwroot/lib/
 src/MarkdownCms/node_modules/
 /src/MarkdownCms/project.lock.json
+/.vscode
