@@ -25,7 +25,7 @@ using MarkdownCms.Controllers;
 
 namespace MarkdownCms
 {
-    public static class X
+    public static class Configuration
     {
         public static string FilesPath;
     }
@@ -49,7 +49,7 @@ namespace MarkdownCms
             builder.AddEnvironmentVariables();
             Configuration = builder.Build();
 
-            X.FilesPath = Configuration["AppSettings:FilesPath"];
+            MarkdownCms.Configuration.FilesPath = Configuration["AppSettings:FilesPath"];
         }
 
         public IConfiguration Configuration { get; set; }

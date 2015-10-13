@@ -24,7 +24,7 @@ namespace MarkdownCms.Models
 
         public String GetPathForUrl()
         {            
-            var rootDirectory = X.FilesPath;
+            var rootDirectory = Configuration.FilesPath;
             var path = this.Path.Replace(rootDirectory, "");
             path = path.Replace('\\', '/');
             var index = path.LastIndexOf('.');

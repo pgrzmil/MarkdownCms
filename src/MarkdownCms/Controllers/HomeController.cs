@@ -14,7 +14,7 @@ namespace MarkdownCms.Controllers
 
         public HomeController()
         {
-            FilesPath = X.FilesPath;
+            FilesPath = Configuration.FilesPath;
         }
 
         public ActionResult Index(string path = "")
